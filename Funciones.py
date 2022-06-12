@@ -1,15 +1,33 @@
-import random
+import math
 
-def crear_lista():
-    global lista
-    lista = []
-    for i in range(0,20):
-        lista.append(random.randint(1,100))
-    return print("---La lista ha sido creada---")
+def sumar(x:float, y: float)->float :
+    """Retorna la suma de x + y"""
+    return x + y
 
-def mostrar_lista():
-    return print(lista)
+def restar(x:float, y: float)->float :
+    """Retorna la resta de x - y"""
+    return x - y
 
-def ordenar():
-    lista.sort()
-    return print(lista)
+def multiplicar(x:float, y: float)->float :
+    """Retorna la multiplicacion de x * y"""
+    return x * y
+
+def dividir()->float :
+    """Retorna la division de x / y"""
+    x = get_numero('Ingrese el primer numero: ')
+    y = get_numero('Ingrese el segundo numero: ')
+    try:
+        division = x / y
+        print(f'la division de los numeros es  : {division}')
+    except ZeroDivisionError:
+        print("No es posible dividir entre cero")
+        return dividir()
+
+def get_numero(msg: str='Ingrese un número entero: ')->int:
+    """Solicita un número"""
+    try:
+        x = int(input(msg))
+        return x
+    except ValueError:
+        print("Tipo de dato no valido")
+        return get_numero(msg)
